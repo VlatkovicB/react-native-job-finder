@@ -1,8 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { createAppContainer } from "react-navigation";
-import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import { createStackNavigator } from "react-navigation-stack";
+import { createBottomTabNavigator } from "react-navigation-tabs";
+
+import { Provider } from "react-redux";
+import store from "./store";
 
 import AuthScreen from "./screens/AuthScreen";
 import WelcomeScreen from "./screens/WelcomeScreen";
@@ -14,12 +17,12 @@ import ReviewScreen from "./screens/ReviewScreen";
 class App extends React.Component {
   render() {
     const MainNavigator = createAppContainer(
-      createMaterialBottomTabNavigator(
+      createBottomTabNavigator(
         {
           welcome: { screen: WelcomeScreen },
           auth: { screen: AuthScreen },
           main: {
-            screen: createMaterialBottomTabNavigator({
+            screen: createBottomTabNavigator({
               map: { screen: MapScreen },
               deck: { screen: DeckScreen },
               review: {
@@ -32,15 +35,19 @@ class App extends React.Component {
           }
         },
         {
-          initialRouteName: "welcome",
-          activeColor: "#fff",
-          inactiveColor: "#5ce3b4",
-          barStyle: { backgroundColor: "#0f04eb" }
+          defaultNavigationOptions: {
+            tabBarVisible: false
+          },
+          initialRouteName: "welcome"
         }
       )
     );
 
-    return <MainNavigator />;
+    return (
+      <Provider store={store}>
+        <MainNavigator />
+      </Provider>
+    );
   }
 }
 
