@@ -33,9 +33,9 @@ class App extends React.Component {
         },
         {
           initialRouteName: "welcome",
-          activeColor: "#f0edf6",
-          inactiveColor: "#3e2465",
-          barStyle: { backgroundColor: "#6518F4" }
+          activeColor: "#fff",
+          inactiveColor: "#5ce3b4",
+          barStyle: { backgroundColor: "#0f04eb" }
         }
       )
     );
