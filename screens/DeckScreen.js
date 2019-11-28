@@ -1,19 +1,27 @@
-import React, { Component } from 'react'
-import { Text, StyleSheet, View } from 'react-native'
+import React, { Component } from "react";
+import { Text, StyleSheet, View } from "react-native";
+import { connect } from "react-redux";
+import Swipe from "../components/Swipe";
 
-export default class DeckScreen extends Component {
-    render() {
-        return (
-            <View>
-                <Text> Deck Scree </Text>
-                <Text> Deck Scree </Text>
-                <Text> Deck Scree </Text>
-                <Text> Deck Scree </Text>
-                <Text> Deck Scree </Text>
-                <Text> Deck Scree </Text>
-            </View>
-        )
-    }
+class DeckScreen extends Component {
+  // Video 123
+  render() {
+    return (
+      <View>
+        <Swipe
+          data={this.props.jobs}
+          renderNoMoreCards={this.noMoreCards}
+          renderCard={this.renderCard}
+        />
+      </View>
+    );
+  }
 }
 
-const styles = StyleSheet.create({})
+function mapStateToProps(state) {
+  return { jobs: state.jobs };
+}
+
+export default connect(mapStateToProps)(DeckScreen);
+
+const styles = StyleSheet.create({});
