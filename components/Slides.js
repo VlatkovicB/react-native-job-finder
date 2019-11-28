@@ -25,7 +25,6 @@ export default class Slides extends Component {
         <Button
           buttonStyle={styles.buttonStyle}
           title="Forward"
-        //   raised
           onPress={this.props.onComplete}
         />
       );
