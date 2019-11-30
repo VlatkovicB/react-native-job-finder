@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { Button } from "react-native-elements";
 
 import * as actions from "../actions";
-
+ 
 class MapScreen extends Component {
   state = {
     mapLoaded: false,
